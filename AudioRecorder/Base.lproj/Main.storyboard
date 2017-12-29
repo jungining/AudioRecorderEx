@@ -92,6 +92,7 @@
                     <connections>
                         <outlet property="durationLabel" destination="gWo-sa-9hH" id="BvI-ik-pTu"/>
                         <outlet property="micBtn" destination="cCf-lw-Fbn" id="IN0-dz-WUC"/>
+                        <outlet property="playBtn" destination="PKh-e6-l1Y" id="gob-UA-EPj"/>
                         <outlet property="recoredView" destination="oRP-Zr-Bn4" id="UVZ-6H-3O5"/>
                         <outlet property="statusLabel" destination="62y-ge-A2U" id="Zq8-gZ-bJM"/>
                     </connections>

@@ -11,6 +11,38 @@ import UIKit
 class ViewController: UIViewController {
 
     
+    @IBOutlet weak var micBtn: UIButton!
+    
+    @IBOutlet weak var recoredView: UIView!
+    
+    @IBOutlet weak var statusLabel: UILabel!
+    @IBOutlet weak var durationLabel: UILabel!
+    
+    
+    
+    
+    @IBOutlet weak var playBtn: UIButton!
+    
+    @IBAction func playFile(_ sender: Any) {
+        
+        if AudioPlayerManager.shared.isPlaying{
+            
+            AudioPlayerManager.shared.pause()
+            self.playBtn.setImage(#imageLiteral(resourceName: "play"), for: .normal)
+            
+        }else{
+            
+            let path = AudioPlayerManager.shared.audioFileInUserDocuments(fileName: "TestFile")
+            self.playBtn.setImage(#imageLiteral(resourceName: "play-1"), for: .normal)
+            
+            AudioPlayerManager.shared.play(path: path)
+        }
+        
+    }
+    
+    
+    
+    
     //MARK:
     //MARK: VIEW
     override func viewDidLoad() {
@@ -18,6 +50,27 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         
         self.buildVoiceCirlce()
+        
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.audioPlayerDidFinishPlaying), name: NSNotification.Name.AudioPlayerDidFinishPlayingAudioFile, object: nil)
+        
+    }
+    
+    
+    @objc func audioPlayerDidFinishPlaying(){
+        
+        print("Audio player did finish")
+        
+        DispatchQueue.main.async {
+            self.playBtn.setImage(#imageLiteral(resourceName: "play"), for: .normal)
+        }
+        
+    }
+    
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
     
     
@@ -28,20 +81,14 @@ class ViewController: UIViewController {
     //MARK:
     //MARK: Recored Button
     
-    
-    @IBOutlet weak var micBtn: UIButton!
-    @IBOutlet weak var recoredView: UIView!
-    @IBOutlet weak var statusLabel: UILabel!
-    @IBOutlet weak var durationLabel: UILabel!
-    
     @IBAction func StartRecording(_ sender: UIButton) {
         
         if AudioRecorderManager.shared.record(fileName: "TestFile") {
-             nonObservablePropertiesUpdateTimer.resume() 
+            nonObservablePropertiesUpdateTimer.resume()
         }
-//            .record(fileName: "TestFile"){
-//
-//        }
+        //            .record(fileName: "TestFile"){
+        //
+        //        }
         
         
         //날짜 포매터 만들기
@@ -108,27 +155,6 @@ class ViewController: UIViewController {
     }
     
     
-    @IBAction func playFile(_ sender: Any) {
-        
-        
-        //In order to check the file if it's recording we can check for the file if it is exists after the record
-        
-        //Let's get the user's doc path
-        let url = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
-        
-        print("File Location:",url.path)
-        
-        
-        if FileManager.default.fileExists(atPath: url.path){
-            print("File found and ready to play")
-        }else{
-            print("no FIle")
-        }
-        
-        
-    }
-    
-    
     //MARK:
     //MARK: Build Wave Cricle
     var WaveAnimationView:UIView!
@@ -151,7 +177,6 @@ class ViewController: UIViewController {
     }
     
     
-
 
 
 }
