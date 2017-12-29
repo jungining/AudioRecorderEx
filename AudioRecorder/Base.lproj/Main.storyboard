@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Avenir.ttc">
+            <string>Avenir-Medium</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="AudioRecorder" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bk" translatesAutoresizingMaskIntoConstraints="NO" id="Jf5-jl-chk">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oRP-Zr-Bn4">
+                                <rect key="frame" x="67" y="97" width="240" height="240"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gWo-sa-9hH">
+                                        <rect key="frame" x="-52" y="95" width="343" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                        <color key="textColor" red="0.949773953" green="0.949773953" blue="0.949773953" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="240" id="I9h-sP-BlL"/>
+                                    <constraint firstAttribute="width" constant="240" id="U52-Ko-vV4"/>
+                                </constraints>
+                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="hwN-E5-qzz">
+                                <rect key="frame" x="37" y="317" width="300" height="300"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Press &amp; hold to start" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="62y-ge-A2U">
+                                        <rect key="frame" x="85" y="0.0" width="130" height="100"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="14"/>
+                                        <color key="textColor" red="0.33686142739494512" green="0.96014755959999998" blue="0.42175335845953854" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cCf-lw-Fbn">
+                                        <rect key="frame" x="100" y="100" width="100" height="100"/>
+                                        <state key="normal" image="micButtonImg"/>
+                                        <state key="selected" image="recordBtn"/>
+                                        <state key="highlighted" image="recordBtn"/>
+                                        <connections>
+                                            <action selector="StartRecording:" destination="BYZ-38-t0r" eventType="touchDown" id="f0Z-c1-FKS"/>
+                                            <action selector="stopRecording:" destination="BYZ-38-t0r" eventType="touchUpInside" id="X6A-hP-B7S"/>
+                                            <action selector="stopRecording:" destination="BYZ-38-t0r" eventType="touchUpOutside" id="tER-fx-syN"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PKh-e6-l1Y">
+                                        <rect key="frame" x="127.5" y="200" width="45" height="100"/>
+                                        <state key="normal" image="play"/>
+                                        <connections>
+                                            <action selector="playFile:" destination="BYZ-38-t0r" eventType="touchUpInside" id="h3C-sc-Cu7"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="eMt-xW-kLN"/>
+                                    <constraint firstAttribute="width" constant="300" id="kFr-Er-YgR"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="hwN-E5-qzz" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="4Uh-Bc-Q2Q"/>
+                            <constraint firstAttribute="bottom" secondItem="hwN-E5-qzz" secondAttribute="bottom" constant="50" id="Y9X-51-yeX"/>
+                            <constraint firstItem="hwN-E5-qzz" firstAttribute="top" secondItem="oRP-Zr-Bn4" secondAttribute="bottom" constant="-20" id="dhs-jY-Fpg"/>
+                            <constraint firstItem="oRP-Zr-Bn4" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="tOb-uQ-VN9"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="durationLabel" destination="gWo-sa-9hH" id="BvI-ik-pTu"/>
+                        <outlet property="micBtn" destination="cCf-lw-Fbn" id="IN0-dz-WUC"/>
+                        <outlet property="recoredView" destination="oRP-Zr-Bn4" id="UVZ-6H-3O5"/>
+                        <outlet property="statusLabel" destination="62y-ge-A2U" id="Zq8-gZ-bJM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="140" y="138.98050974512745"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="bk" width="640" height="960"/>
+        <image name="micButtonImg" width="100" height="100"/>
+        <image name="play" width="45" height="45"/>
+        <image name="recordBtn" width="100" height="100"/>
+    </resources>
+</document>
